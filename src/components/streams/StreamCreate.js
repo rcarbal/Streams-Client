@@ -1,5 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'redux-thunk';
+import { createStreams } from '../../actions'
 
 class StreamCreate extends React.Component {
     renderError({error, touched}){
