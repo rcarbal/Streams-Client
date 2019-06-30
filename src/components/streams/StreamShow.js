@@ -12,8 +12,23 @@ class StreamShow extends React.Component{
 
     componentDidMount(){
         const { id } = this.props.match.params;
+        
         this.props.fetchStream(id);
+        this.buildPlayer();
+    }
 
+    // If we don't have access to our stream and want to fetch it on the fly we need to call build 
+    // player after we successfully build the strea.
+    componentDidUpdate(){
+        this.buildPlayer();
+    }
+
+    buildPlayer(){
+        const { id } = this.props.match.params;
+
+        if(this.player.attachMediaElement(this.videoRef.current)){
+            return;
+        }
         this.player = flv.props.fetchStream(id);
         flv.createPlayer({
             type:'flv',
