@@ -17,6 +17,10 @@ class StreamShow extends React.Component{
         this.buildPlayer();
     }
 
+    componentWillMount(){
+        this.player.destroy();
+    }
+
     // If we don't have access to our stream and want to fetch it on the fly we need to call build 
     // player after we successfully build the strea.
     componentDidUpdate(){
